@@ -126,7 +126,7 @@ def warning_check(new_letter, letters_guessed, warnings, current_guess_state):
         msg = 'You have no warnings left so you lose one guess:'
     if len(new_letter) != 1:
         return f'Oops! It must be 1 letter. {msg} {current_guess_state}', True
-    if not new_letter.isalpha():
+    if new_letter not in set(string.ascii_lowercase):
         return f'Oops! That is not a valid letter. {msg} {current_guess_state}', True
     if new_letter in letters_guessed:
         return f"Oops! You've already guessed that letter. {msg} {current_guess_state}", True
@@ -260,7 +260,7 @@ def hangman(secret_word, hints=False):
             print(guess_result)
             
     #game ending message    
-    print(ending_message_define(secret_word, guesses))
+    ending_message_define(secret_word, guesses)
 
 
 def hangman_with_hints(secret_word):
