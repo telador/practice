@@ -126,7 +126,7 @@ def warning_check(new_letter, letters_guessed, warnings, current_guess_state):
         msg = 'You have no warnings left so you lose one guess:'
     if len(new_letter) != 1:
         return f'Oops! It must be 1 letter. {msg} {current_guess_state}', True
-    if new_letter not in set(string.ascii_lowercase):
+    if (not new_letter.isalpha()) or (not new_letter.isascii()):
         return f'Oops! That is not a valid letter. {msg} {current_guess_state}', True
     if new_letter in letters_guessed:
         return f"Oops! You've already guessed that letter. {msg} {current_guess_state}", True
